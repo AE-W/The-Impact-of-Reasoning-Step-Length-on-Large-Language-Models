@@ -2,23 +2,23 @@
 
 import argparse
 from utils import *
-from attack import rephase_sentence
+# from attack import rephase_sentence
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
+
 
 def main():
     args = parse_arguments()
     print('*****************************')
     print(args)
     print('*****************************')
-    
+
     fix_seed(args.random_seed)
 
-    
     # Initialize decoder class (load model and tokenizer) ...
     decoder = Decoder()
-    
+
     print("setup data loader ...")
     dataloader = setup_data_loader(args)
     print_now()
@@ -37,19 +37,18 @@ def main():
 
         for i, data in enumerate(dataloader):
             if i < args.resume_id - 1:
-            # if i < 297:
+                # if i < 297:
                 continue
             output_line = {}
-            
+
             print('*************************')
             print("{}st data".format(i+1))
-                    
+
             # Prepare question template ...
             x, y = data
             x = "Q: " + x[0] + "\n" + "A:"
             y = y[0].strip()
 
-            
             output_line["question"] = x
             output_line["gold_ans"] = y
 
@@ -58,13 +57,12 @@ def main():
             flag = True
             i = 0
             # if not correct, try to add one more step
-            while(flag):
-                #demo1 = rephase_sentence(demo1, args, 1)
+            while (flag):
+                # demo1 = rephase_sentence(demo1, args, 1)
                 print("demo1", demo1)
 
-                i=i+1
-                #demo1 = rephase_sentence(demo1,1)
-
+                i = i+1
+                # demo1 = rephase_sentence(demo1,1)
 
                 demo1 = str(demo1)
                 if args.method == "zero_shot":
@@ -94,16 +92,14 @@ def main():
                 else:
                     pred = z
                     print(x)
-                    #print(x + pred)
+                    # print(x + pred)
                     print(pred)
 
-                
                 pred = answer_cleansing(args, pred)
-
 
                 output_line["pred_ans"] = pred
                 output_line["wrap_que"] = x
-                if(i==1):
+                if (i == 1):
                     flag = False
                     print("it is too much")
 
@@ -111,8 +107,7 @@ def main():
                     flag = False
                     print("correct")
                 else:
-                     print("wrong")
-
+                    print("wrong")
 
                 output_json = json.dumps(output_line)
                 wp.write(output_json + '\n')
@@ -122,24 +117,25 @@ def main():
                 print("GT : " + y)
                 print('*************************')
 
-
                 # Checking answer ...
                 correct = (np.array([pred]) == np.array([y])).sum().item()
                 correct_list.append(correct)
-                total += 1 #np.array([y]).size(0)
+                total += 1  # np.array([y]).size(0)
 
                 if (args.limit_dataset_size != 0) and ((i+1) >= args.limit_dataset_size):
                     break
-                #raise ValueError("Stop !!")
+                # raise ValueError("Stop !!")
 
     # Calculate accuracy ...
     accuracy = (sum(correct_list) * 1.0 / total) * 100
     print("accuracy : {}".format(accuracy))
-    
+
+
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Zero-shot-CoT")
 
-    parser.add_argument("--random_seed", type=int, default=1, help="random seed")
+    parser.add_argument("--random_seed", type=int,
+                        default=1, help="random seed")
     parser.add_argument(
         "--dataset", type=str, default="multiarith", choices=["aqua", "gsm8k", "commonsensqa", "addsub", "multiarith",  "strategyqa", "svamp", "singleeq", "coin_flip", "last_letters"], help="dataset used for experiment"
     )
@@ -149,14 +145,16 @@ def parse_arguments():
     parser.add_argument(
         "--resume_id", type=int, default=0, help="resume from which question id (current line number in the output file), if the experiment fails accidently (e.g., network error)"
     )
-    parser.add_argument("--minibatch_size", type=int, default=1, choices=[1], help="minibatch size should be 1 because GPT-3 API takes only 1 input for each request")
-    
-    parser.add_argument("--max_num_worker", type=int, default=0, help="maximum number of workers for dataloader")
-    
+    parser.add_argument("--minibatch_size", type=int, default=1, choices=[
+                        1], help="minibatch size should be 1 because GPT-3 API takes only 1 input for each request")
+
+    parser.add_argument("--max_num_worker", type=int, default=0,
+                        help="maximum number of workers for dataloader")
+
     parser.add_argument(
         "--model", type=str, default="gpt3-xl", choices=["gpt3", "gpt3-medium", "gpt3-large", "gpt3-xl", "code-davinci-002"], help="model used for decoding. Note that 'gpt3' are the smallest models."
     )
-    
+
     parser.add_argument(
         "--method", type=str, default="few_shot", choices=["zero_shot", "zero_shot_cot", "few_shot", "few_shot_cot", "auto_cot"], help="method"
     )
@@ -181,9 +179,9 @@ def parse_arguments():
     parser.add_argument(
         "--log_dir", type=str, default="./log/", help="log directory"
     )
-    
+
     args = parser.parse_args()
-    
+
     if args.dataset == "aqua":
         args.dataset_path = "./dataset/AQuA/test.json"
         args.direct_answer_trigger = "\nTherefore, among A through E, the answer is"
@@ -219,19 +217,20 @@ def parse_arguments():
         args.dataset_path = "./dataset/coin_flip/coin_flip100.json"
         args.direct_answer_trigger = "\nTherefore, the answer (Yes or No) is"
     elif args.dataset == "last_letters":
-        args.dataset_path = "./dataset/last_letters/last_letters100.json"
+        args.dataset_path = "./dataset/last_letters/last_letters.json"
         args.direct_answer_trigger = "\nTherefore, the answer is"
     else:
         raise ValueError("dataset is not properly defined ...")
-        
+
     # "Therefore, the answer ..." -> "The answer ..."
     trigger = args.direct_answer_trigger.replace("\nTherefore, ", "")
     args.direct_answer_trigger_for_zeroshot = trigger[0].upper() + trigger[1:]
     args.direct_answer_trigger_for_zeroshot_cot = args.direct_answer_trigger
     args.direct_answer_trigger_for_fewshot = "The answer is"
     args.cot_trigger = "Let's think step by step."
-    
+
     return args
+
 
 if __name__ == "__main__":
     main()
