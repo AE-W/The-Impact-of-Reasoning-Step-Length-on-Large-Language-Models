@@ -1,0 +1,128 @@
+*****************************
+Namespace(api_time_interval=1.0, cot_trigger="Let's think step by step.", dataset='last_letters', dataset_path='./dataset/last_letters/last_letters.json', demo_path='demo/last_letters_2', direct_answer_trigger='\nTherefore, the answer is', direct_answer_trigger_for_fewshot='the answer is', direct_answer_trigger_for_zeroshot='The answer is', direct_answer_trigger_for_zeroshot_cot='\nTherefore, the answer is', limit_dataset_size=0, log_dir='./log/', max_length_cot=512, max_length_direct=32, max_num_worker=0, method='auto_cot', minibatch_size=1, model='gpt-4o-mini', output_dir='experiment/gpt-4o-mini/letter_auto_2', random_seed=1, resume_id=0, temperature=0)
+*****************************
+setup data loader ...
+worker_seed : 1
+dataloader_num_workers: 0
+dataset : last_letters
+data size : 500
+average num of words for each sample : 15.03
+2025/01/23 06:35:47
+auto_cot
+flag=True
+debug: {'question': 'Q: Take the last letters of each words in "Tim Candace Cecil Misael" and concatenate them.\nA:', 'rationale': 'Let\'s think step by step. There is four words. So the answer will consist of four letters. The last letter of "Tim" is "m". The last letter of "Candace" is "e". The last letter of "Cecil" is "l". The last letter of "Misael" is "l". So the final answer would be "mel".', 'pred_ans': 'mel', 'gold_ans': 'mell'}
+*************************
+1st data
+demo1 Q: Take the last letters of each words in "Tim Candace Cecil Misael" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Tim" is "m". The last letter of "Candace" is "e". The last letter of "Cecil" is "l". The last letter of "Misael" is "l". So the final answer would be "mel". the answer is mel.
+
+Q: Take the last letters of each words in "Alina Alessandra Amina Bianca" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Alina" is "a". The last letter of "Alessandra" is "a". The last letter of "Amina" is "a". The last letter of "Bianca" is "a". So the final answer is "aaaa". the answer is aaaa.
+
+Q: Take the last letters of each words in "Felipe Heidi Nino Bradley" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Felipe" is "e". The last letter of "Heidi" is "i". The last letter of "Nino" is "o". The last letter of "Bradley" is "y". So the final answer would be "eiofy". the answer is eiofy.
+
+Q: Take the last letters of each words in "Lacey Nora Debra Ashleigh" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Lacey" is "y". The last letter of "Nora" is "a". The last letter of "Debra" is "a". The last letter of "Ashleigh" is "h". So the final answer is "yahah". the answer is yahah.
+
+
+Q: Take the last letters of each words in "Jeff Jen Giselle Noel" and concatenate them.
+A:
+There are four words, so the answer will consist of four letters. The last letter of "Jeff" is "f". The last letter of "Jen" is "n". The last letter of "Giselle" is "e". The last letter of "Noel" is "l". So the final answer is "fnel". The answer is fnel.
+pred_before : There are four words, so the answer will consist of four letters. The last letter of "Jeff" is "f". The last letter of "Jen" is "n". The last letter of "Giselle" is "e". The last letter of "Noel" is "l". So the final answer is "fnel". The answer is fnel.
+pred_after : fnel
+it is too much
+correct
+pred : fnel
+GT : fnel
+*************************
+*************************
+2st data
+demo1 Q: Take the last letters of each words in "Tim Candace Cecil Misael" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Tim" is "m". The last letter of "Candace" is "e". The last letter of "Cecil" is "l". The last letter of "Misael" is "l". So the final answer would be "mel". the answer is mel.
+
+Q: Take the last letters of each words in "Alina Alessandra Amina Bianca" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Alina" is "a". The last letter of "Alessandra" is "a". The last letter of "Amina" is "a". The last letter of "Bianca" is "a". So the final answer is "aaaa". the answer is aaaa.
+
+Q: Take the last letters of each words in "Felipe Heidi Nino Bradley" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Felipe" is "e". The last letter of "Heidi" is "i". The last letter of "Nino" is "o". The last letter of "Bradley" is "y". So the final answer would be "eiofy". the answer is eiofy.
+
+Q: Take the last letters of each words in "Lacey Nora Debra Ashleigh" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Lacey" is "y". The last letter of "Nora" is "a". The last letter of "Debra" is "a". The last letter of "Ashleigh" is "h". So the final answer is "yahah". the answer is yahah.
+
+
+Q: Take the last letters of each words in "Rena Devon Rosalinda Paulina" and concatenate them.
+A:
+There are four words, so the answer will consist of four letters. The last letter of "Rena" is "a". The last letter of "Devon" is "n". The last letter of "Rosalinda" is "a". The last letter of "Paulina" is "a". So the final answer is "anaa". The answer is anaa.
+pred_before : There are four words, so the answer will consist of four letters. The last letter of "Rena" is "a". The last letter of "Devon" is "n". The last letter of "Rosalinda" is "a". The last letter of "Paulina" is "a". So the final answer is "anaa". The answer is anaa.
+pred_after : anaa
+it is too much
+correct
+pred : anaa
+GT : anaa
+*************************
+*************************
+3st data
+demo1 Q: Take the last letters of each words in "Tim Candace Cecil Misael" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Tim" is "m". The last letter of "Candace" is "e". The last letter of "Cecil" is "l". The last letter of "Misael" is "l". So the final answer would be "mel". the answer is mel.
+
+Q: Take the last letters of each words in "Alina Alessandra Amina Bianca" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Alina" is "a". The last letter of "Alessandra" is "a". The last letter of "Amina" is "a". The last letter of "Bianca" is "a". So the final answer is "aaaa". the answer is aaaa.
+
+Q: Take the last letters of each words in "Felipe Heidi Nino Bradley" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Felipe" is "e". The last letter of "Heidi" is "i". The last letter of "Nino" is "o". The last letter of "Bradley" is "y". So the final answer would be "eiofy". the answer is eiofy.
+
+Q: Take the last letters of each words in "Lacey Nora Debra Ashleigh" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Lacey" is "y". The last letter of "Nora" is "a". The last letter of "Debra" is "a". The last letter of "Ashleigh" is "h". So the final answer is "yahah". the answer is yahah.
+
+
+Q: Take the last letters of each words in "Rachel Alisa Fanny Jeffery" and concatenate them.
+A:
+There are four words, so the answer will consist of four letters. The last letter of "Rachel" is "l". The last letter of "Alisa" is "a". The last letter of "Fanny" is "y". The last letter of "Jeffery" is "y". So the final answer is "layy". The answer is layy.
+pred_before : There are four words, so the answer will consist of four letters. The last letter of "Rachel" is "l". The last letter of "Alisa" is "a". The last letter of "Fanny" is "y". The last letter of "Jeffery" is "y". So the final answer is "layy". The answer is layy.
+pred_after : layy
+it is too much
+correct
+pred : layy
+GT : layy
+*************************
+*************************
+4st data
+demo1 Q: Take the last letters of each words in "Tim Candace Cecil Misael" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Tim" is "m". The last letter of "Candace" is "e". The last letter of "Cecil" is "l". The last letter of "Misael" is "l". So the final answer would be "mel". the answer is mel.
+
+Q: Take the last letters of each words in "Alina Alessandra Amina Bianca" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Alina" is "a". The last letter of "Alessandra" is "a". The last letter of "Amina" is "a". The last letter of "Bianca" is "a". So the final answer is "aaaa". the answer is aaaa.
+
+Q: Take the last letters of each words in "Felipe Heidi Nino Bradley" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Felipe" is "e". The last letter of "Heidi" is "i". The last letter of "Nino" is "o". The last letter of "Bradley" is "y". So the final answer would be "eiofy". the answer is eiofy.
+
+Q: Take the last letters of each words in "Lacey Nora Debra Ashleigh" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Lacey" is "y". The last letter of "Nora" is "a". The last letter of "Debra" is "a". The last letter of "Ashleigh" is "h". So the final answer is "yahah". the answer is yahah.
+
+
+Q: Take the last letters of each words in "Wilmer Valerie Melissa Eloisa" and concatenate them.
+A:
+There are four words, so the answer will consist of four letters. The last letter of "Wilmer" is "r". The last letter of "Valerie" is "e". The last letter of "Melissa" is "a". The last letter of "Eloisa" is "a". So the final answer is "reaa". The answer is reaa.
+pred_before : There are four words, so the answer will consist of four letters. The last letter of "Wilmer" is "r". The last letter of "Valerie" is "e". The last letter of "Melissa" is "a". The last letter of "Eloisa" is "a". So the final answer is "reaa". The answer is reaa.
+pred_after : reaa
+it is too much
+correct
+pred : reaa
+GT : reaa
+*************************
+*************************
+5st data
+demo1 Q: Take the last letters of each words in "Tim Candace Cecil Misael" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Tim" is "m". The last letter of "Candace" is "e". The last letter of "Cecil" is "l". The last letter of "Misael" is "l". So the final answer would be "mel". the answer is mel.
+
+Q: Take the last letters of each words in "Alina Alessandra Amina Bianca" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Alina" is "a". The last letter of "Alessandra" is "a". The last letter of "Amina" is "a". The last letter of "Bianca" is "a". So the final answer is "aaaa". the answer is aaaa.
+
+Q: Take the last letters of each words in "Felipe Heidi Nino Bradley" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Felipe" is "e". The last letter of "Heidi" is "i". The last letter of "Nino" is "o". The last letter of "Bradley" is "y". So the final answer would be "eiofy". the answer is eiofy.
+
+Q: Take the last letters of each words in "Lacey Nora Debra Ashleigh" and concatenate them.
+A: Let's think step by step. There is four words. So the answer will consist of four letters. The last letter of "Lacey" is "y". The last letter of "Nora" is "a". The last letter of "Debra" is "a". The last letter of "Ashleigh" is "h". So the final answer is "yahah". the answer is yahah.
+
+
