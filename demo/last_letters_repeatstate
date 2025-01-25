@@ -1,0 +1,28 @@
+{
+    "demo": [
+        {
+            "question": "Q: Take the last letters of each words in \"Tim Candace Cecil Misael\" and concatenate them.\nA:",
+            "rationale": "Let’s think step by step. The state of the process starts with identifying the words in the question: \"Tim\", \"Candace\", \"Cecil\", and \"Misael\". The first word is \"Tim\". Its last letter is \"m\". Now, the result is \"m\". The second word is \"Candace\". Its last letter is \"e\". Adding \"e\" to the result makes it \"me\". The third word is \"Cecil\". Its last letter is \"l\". Adding \"l\" to the result makes it \"mel\". The fourth word is \"Misael\". Its last letter is \"l\". Adding \"l\" to the result makes it \"mell\". The final answer is \"mell\".",
+            "pred_ans": "mel",
+            "gold_ans": "mell"
+        },
+        {
+            "question": "Q: Take the last letters of each words in \"Alina Alessandra Amina Bianca\" and concatenate them.\nA:",
+            "rationale": "Let’s think step by step. The state of the process starts with identifying the words in the question: \"Alina\", \"Alessandra\", \"Amina\", and \"Bianca\". The first word is \"Alina\". Its last letter is \"a\". Now, the result is \"a\". The second word is \"Alessandra\". Its last letter is \"a\". Adding \"a\" to the result makes it \"aa\". The third word is \"Amina\". Its last letter is \"a\". Adding \"a\" to the result makes it \"aaa\". The fourth word is \"Bianca\". Its last letter is \"a\". Adding \"a\" to the result makes it \"aaaa\". The final answer is \"aaaa\".",
+            "pred_ans": "aaaa",
+            "gold_ans": "aaaa"
+        },
+        {
+            "question": "Q: Take the last letters of each words in \"Felipe Heidi Nino Bradley\" and concatenate them.\nA:",
+            "rationale": "Let’s think step by step. The state of the process starts with identifying the words in the question: \"Felipe\", \"Heidi\", \"Nino\", and \"Bradley\". The first word is \"Felipe\". Its last letter is \"e\". Now, the result is \"e\". The second word is \"Heidi\". Its last letter is \"i\". Adding \"i\" to the result makes it \"ei\". The third word is \"Nino\". Its last letter is \"o\". Adding \"o\" to the result makes it \"eio\". The fourth word is \"Bradley\". Its last letter is \"y\". Adding \"y\" to the result makes it \"eioy\". The final answer is \"eioy\".",
+            "pred_ans": "eiofy",
+            "gold_ans": "eioy"
+        },
+        {
+            "question": "Q: Take the last letters of each words in \"Lacey Nora Debra Ashleigh\" and concatenate them.\nA:",
+            "rationale": "Let’s think step by step. The state of the process starts with identifying the words in the question: \"Lacey\", \"Nora\", \"Debra\", and \"Ashleigh\". The first word is \"Lacey\". Its last letter is \"y\". Now, the result is \"y\". The second word is \"Nora\". Its last letter is \"a\". Adding \"a\" to the result makes it \"ya\". The third word is \"Debra\". Its last letter is \"a\". Adding \"a\" to the result makes it \"yaa\". The fourth word is \"Ashleigh\". Its last letter is \"h\". Adding \"h\" to the result makes it \"yaah\". The final answer is \"yaah\".",
+            "pred_ans": "yahah",
+            "gold_ans": "yaah"
+        }
+    ]
+}

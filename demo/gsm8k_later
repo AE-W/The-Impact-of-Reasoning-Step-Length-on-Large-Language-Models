@@ -1,0 +1,22 @@
+{
+    "demo": [
+        {
+            "question": "Q: Anna is trying to buy books for her local library. She had a budget of $16, and she has already spent $4. She also bought 2 books today, and both books cost her the same amount of money. If Anna has $2 left in her budget, how much did each of the books cost?\nA:",
+            "rationale": "Let's think step by step. Anna has a budget of $16. She spends $4, so she has $12 left. She buys 2 books, so she has $2 left. That means each book cost her ($12 - $2) ÷ 2 = $3.",
+            "pred_ans": "3",
+            "gold_ans": "5"
+        },
+        {
+            "question": "Q: If Ann is 9 years old and her brother is twice her age, how old will her brother be in 3 years?\nA:",
+            "rationale": "Let's think step by step. Ann is 9 years old. Her brother is twice her age. That means her brother is 9 * 2 = 18 years old. In 3 years, her brother will be 18 + 3 = 22 years old.",
+            "pred_ans": "22",
+            "gold_ans": "21"
+        },
+        {
+            "question": "Q: Alice has 6 more books than Steven. Clara has two times as many books as Steven. If Clara has 20 books, how many more books does Clara have than Alice?\nA:",
+            "rationale": "Let's think step by step. If Clara has 20 books, Steven must have 20 ÷ 2 = 10 books. Alice has 6 more books than Steven, so she has 10 + 6 = 16 books. Clara has 20 books, and she has 6 more books than Alice.",
+            "pred_ans": "6",
+            "gold_ans": "4"
+        }
+    ]
+}

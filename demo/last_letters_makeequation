@@ -1,0 +1,28 @@
+{
+    "demo": [
+        {
+            "question": "Q: Take the last letters of each words in \"Tim Candace Cecil Misael\" and concatenate them.\nA:",
+            "rationale": "Explain the problem. The problem is asking us to find the last letters of each word in the phrase \"Tim Candace Cecil Misael\" and concatenate them into a single string. Define the necessary steps. Let’s call the concatenated string \"Result\". Each word contributes its last letter to the result. Let’s break it down step by step. The first word is \"Tim\". Its last letter is \"m\", so Result = \"m\". The second word is \"Candace\". Its last letter is \"e\", so Result = \"me\". The third word is \"Cecil\". Its last letter is \"l\", so Result = \"mel\". The fourth word is \"Misael\". Its last letter is \"l\", so Result = \"mell\". Therefore, the final answer is \"mell\".",
+            "pred_ans": "mel",
+            "gold_ans": "mell"
+        },
+        {
+            "question": "Q: Take the last letters of each words in \"Alina Alessandra Amina Bianca\" and concatenate them.\nA:",
+            "rationale": "Explain the problem. The problem is asking us to find the last letters of each word in the phrase \"Alina Alessandra Amina Bianca\" and concatenate them into a single string. Define the necessary steps. Let’s call the concatenated string \"Result\". Each word contributes its last letter to the result. Let’s break it down step by step. The first word is \"Alina\". Its last letter is \"a\", so Result = \"a\". The second word is \"Alessandra\". Its last letter is \"a\", so Result = \"aa\". The third word is \"Amina\". Its last letter is \"a\", so Result = \"aaa\". The fourth word is \"Bianca\". Its last letter is \"a\", so Result = \"aaaa\". Therefore, the final answer is \"aaaa\".",
+            "pred_ans": "aaaa",
+            "gold_ans": "aaaa"
+        },
+        {
+            "question": "Q: Take the last letters of each words in \"Felipe Heidi Nino Bradley\" and concatenate them.\nA:",
+            "rationale": "Explain the problem. The problem is asking us to find the last letters of each word in the phrase \"Felipe Heidi Nino Bradley\" and concatenate them into a single string. Define the necessary steps. Let’s call the concatenated string \"Result\". Each word contributes its last letter to the result. Let’s break it down step by step. The first word is \"Felipe\". Its last letter is \"e\", so Result = \"e\". The second word is \"Heidi\". Its last letter is \"i\", so Result = \"ei\". The third word is \"Nino\". Its last letter is \"o\", so Result = \"eio\". The fourth word is \"Bradley\". Its last letter is \"y\", so Result = \"eioy\". Therefore, the final answer is \"eioy\".",
+            "pred_ans": "eiofy",
+            "gold_ans": "eioy"
+        },
+        {
+            "question": "Q: Take the last letters of each words in \"Lacey Nora Debra Ashleigh\" and concatenate them.\nA:",
+            "rationale": "Explain the problem. The problem is asking us to find the last letters of each word in the phrase \"Lacey Nora Debra Ashleigh\" and concatenate them into a single string. Define the necessary steps. Let’s call the concatenated string \"Result\". Each word contributes its last letter to the result. Let’s break it down step by step. The first word is \"Lacey\". Its last letter is \"y\", so Result = \"y\". The second word is \"Nora\". Its last letter is \"a\", so Result = \"ya\". The third word is \"Debra\". Its last letter is \"a\", so Result = \"yaa\". The fourth word is \"Ashleigh\". Its last letter is \"h\", so Result = \"yaah\". Therefore, the final answer is \"yaah\".",
+            "pred_ans": "yahah",
+            "gold_ans": "yaah"
+        }
+    ]
+}
