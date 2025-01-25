@@ -32,6 +32,7 @@ def main():
         pass
 
     total = 0
+    correct_count = 0
     correct_list = []
     with open(args.output_dir, "a") as wp:
 
@@ -103,15 +104,27 @@ def main():
 
                 output_line["pred_ans"] = pred
                 output_line["wrap_que"] = x
+
+                y = y.replace(",","")
+
                 if(i==1):
                     flag = False
                     print("it is too much")
 
-                if (np.array([pred]) == np.array([y])):
-                    flag = False
-                    print("correct")
+                if args.dataset in ("gsm8k", "addsub", "multiarith", "svamp", "singleeq") and type(pred) == list :
+                    if (np.array([pred[0]]) == np.array([y]) or np.array([pred[1]]) == np.array([y])):
+                        flag = False
+                        print("correct")
+                        correct_count +=1
+                    else:
+                        print("wrong")
                 else:
-                     print("wrong")
+                    if (np.array([pred]) == np.array([y])):
+                        flag = False
+                        print("correct")
+                        correct_count +=1
+                    else:
+                        print("wrong")
 
 
                 output_json = json.dumps(output_line)
@@ -133,7 +146,8 @@ def main():
                 #raise ValueError("Stop !!")
 
     # Calculate accuracy ...
-    accuracy = (sum(correct_list) * 1.0 / total) * 100
+    # accuracy = (sum(correct_list) * 1.0 / total) * 100
+    accuracy = (correct_count * 1.0 / total) * 100
     print("accuracy : {}".format(accuracy))
     
 def parse_arguments():
@@ -164,7 +178,7 @@ def parse_arguments():
         "--output_dir", type=str, default="experiment/multiarith", help="output directory"
     )
     parser.add_argument(
-        "--max_length_cot", type=int, default=512, help="maximum length of output tokens by model for reasoning extraction"
+        "--max_length_cot", type=int, default=2500, help="maximum length of output tokens by model for reasoning extraction"
     )
     parser.add_argument(
         "--max_length_direct", type=int, default=32, help="maximum length of output tokens by model for answer extraction"
@@ -230,6 +244,7 @@ def parse_arguments():
     args.direct_answer_trigger_for_zeroshot_cot = args.direct_answer_trigger
     args.direct_answer_trigger_for_fewshot = "answer is"
     args.cot_trigger = "Let's think step by step."
+    
     
     return args
 
