@@ -113,16 +113,19 @@ def decoder_for_gpt3_5(arg,input, max_length):
 def decoder_for_gpt4o(arg,input, max_length):
     client = AzureOpenAI(
         api_key=os.getenv('OPENAI_API_KEY'),
-        azure_endpoint='https://api.umgpt.umich.edu/azure-openai-api',
+        azure_endpoint=os.getenv("OPENAI_API_BASE"),
         # api_version='2023-03-15-preview',
-        api_version="2024-02-01",#"2024-02-01",
+        api_version=os.getenv("API_VERSION"),#"2024-02-01",
         organization=os.getenv('OPENAI_ORGANIZATION'),
     ) 
+
+    if not (arg.model == "gpt-4o-mini" or arg.model == "gpt-4o"):
+        assert 1 == 0, "model is not supported ..."
 
     prompt = input
 
     response = client.chat.completions.create(
-                model='gpt-4o-mini',
+                model=arg.model,
                 messages = [
                     {"role": "user","content": prompt},
                 ],
@@ -162,6 +165,8 @@ def data_reader(args):
     answers = []
     decoder = json.JSONDecoder()
 
+    dataset_length = 40
+
     if args.dataset == "aqua":
       with open(args.dataset_path) as f:
         lines = f.readlines()
@@ -176,7 +181,7 @@ def data_reader(args):
     elif args.dataset == "gsm8k":
       with open(args.dataset_path) as f:
         lines = f.readlines()
-        for line in lines:
+        for line in lines[:dataset_length]:
           json_res = decoder.raw_decode(line)[0]
           questions.append(json_res["question"].strip())
           answers.append(json_res["answer"].split("#### ")[-1])
@@ -268,7 +273,7 @@ def data_reader(args):
       with open(args.dataset_path) as f:
         json_data = json.load(f)
         json_data = json_data["examples"]
-        for line in json_data:
+        for line in json_data[:dataset_length]:
           q = line["question"]
           a = line["answer"]
           questions.append(q)
