@@ -165,7 +165,7 @@ def data_reader(args):
     answers = []
     decoder = json.JSONDecoder()
 
-    dataset_length = 40
+    dataset_length = 100
 
     if args.dataset == "aqua":
       with open(args.dataset_path) as f:
